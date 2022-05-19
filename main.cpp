@@ -21,7 +21,7 @@ struct PatientProblem
 {
 	char personal_code[64]{};
 	char starting_date[32]{};
-	char problem[256];
+	char problem[256]{};
 	char description[2048]{};
 };
 
