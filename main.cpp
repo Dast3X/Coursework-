@@ -292,6 +292,7 @@ void FindPatient(vector<PatientInfo>& patients_info, string& code)
 
 void Doctormenu(const vector<PatientInfo>& patients_info, const vector<PatientProblem>& patients_problem)
 {
+	system("CLS");
 	char option = '0';
 	while (option != '7')
 	{
@@ -310,7 +311,7 @@ void Doctormenu(const vector<PatientInfo>& patients_info, const vector<PatientPr
 			break;
 		case '2':
 			cout << "\nYou have quitted menu!\n";
-			break;
+			return;
 		default:
 			cout << "\nERROR" << endl;
 			if (option == '0')
@@ -325,6 +326,7 @@ void Doctormenu(const vector<PatientInfo>& patients_info, const vector<PatientPr
 
 int main()
 {
+	string password;
 	vector<PatientInfo> patients_info;
 	vector<PatientProblem> patients_problem;
 	vector<TreatmentProcess> patients_review;
@@ -406,7 +408,13 @@ int main()
 			PrintReviews(patients_info, patients_problem, patients_review);
 			break;
 		case '8':
-			//doctormenu();
+			system("CLS");
+			cout << "password: ";
+			cin >> password;
+			if (password == "12345")
+				Doctormenu(patients_info, patients_problem);
+			else
+				cout << "Incorrect password\n";
 			break;
 		case '9':
 			cout << "\nYou have quitted from the program!\n";
