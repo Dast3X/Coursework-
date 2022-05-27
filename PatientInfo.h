@@ -22,6 +22,6 @@ void ReadInfo(std::vector<PatientInfo>& patients_info);
 
 std::ostream& operator<<(std::ostream& os, const std::vector<PatientInfo>& patients_info);
 
-PatientInfo GetInfo();
+PatientInfo GetInfo(const std::vector<PatientInfo>& patient_info);
 
 void FindPatient(std::vector<PatientInfo>& patients_info, std::string& code);

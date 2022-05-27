@@ -47,7 +47,7 @@ ostream& operator<<(ostream& os, const vector<PatientInfo>& patients_info)
 	return os;
 }
 
-PatientInfo GetInfo()
+PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 {
 	string tpc, tnum, tage, lv{"+371"};
 	PatientInfo patient;
@@ -73,13 +73,32 @@ PatientInfo GetInfo()
 	}
 	cout << "Enter your personal code (e.g 123456-54321): ";
 		
+	
 	while (true)
 	{
+		bool exist = false;
 		cin >> tpc;
 		if (isvalid_data(tpc, R"re(\d{6}-\d{5})re"))
 		{
-			strcpy_s(patient.personal_code, tpc.c_str());
-			break;
+			for (const auto& i : patient_info)
+			{
+				if (tpc == string(i.personal_code))
+				{
+					exist = true;
+					break;
+				}
+			}
+			if (exist == false)
+			{
+				strcpy_s(patient.personal_code, tpc.c_str());
+				break;
+			}
+			else
+			{
+				cout << "\nPersonal code is already in Database\n";
+				cout << "Enter your personal code (e.g 123456-54321): ";
+			}
+
 		}
 		else
 		{

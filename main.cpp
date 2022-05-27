@@ -135,7 +135,7 @@ int main()
 		{
 
 		case '1':
-			patients_info.push_back(GetInfo());
+			patients_info.push_back(GetInfo(patients_info));
 			break;
 
 		case '2':
