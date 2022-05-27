@@ -78,6 +78,7 @@ void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>
 			FindProblem(patients_problem, code);
 			break;
 		case '3':
+			system("cls");
 			cout << "\nYou have quitted menu!\n";
 			return;
 		default:

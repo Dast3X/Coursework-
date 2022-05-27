@@ -49,20 +49,63 @@ ostream& operator<<(ostream& os, const vector<PatientInfo>& patients_info)
 
 PatientInfo GetInfo()
 {
-	string tage, tpc, tphn;
+	string tpc, tnum, tage, lv{"+371"};
 	PatientInfo patient;
 	cout << "Enter your name: ";
 	cin >> patient.name;
 	cout << "Enter your surname: ";
 	cin >> patient.surname;
 	cout << "Enter your age: ";
-	cin >> patient.age;
-	cout << "Enter your personal code (e.g 12345-54321): ";
-	cin >> tage;
-	 
-	patient.personal_code;
-	cout << "Enter your phone number (e.g +3712345678): ";
-	cin >> patient.phone_number;
+
+	while (true)
+	{
+		cin >> tage;
+		if (isvalid_data(tage, R"re(\d{2})re") || isvalid_data(tage, R"re(\d{1})re"))
+		{
+			patient.age = stoi(tage);
+			break;
+		}
+		else
+		{
+			cout << "\nIncorrect input(s). Try again!\n";
+			cout << "Enter your age: ";
+		}
+	}
+	cout << "Enter your personal code (e.g 123456-54321): ";
+		
+	while (true)
+	{
+		cin >> tpc;
+		if (isvalid_data(tpc, R"re(\d{6}-\d{5})re"))
+		{
+			strcpy_s(patient.personal_code, tpc.c_str());
+			break;
+		}
+		else
+		{
+			cout << "\nIncorrect input(s). Try again!\n";
+			cout << "Enter your personal code (e.g 123456-54321): ";
+		}
+	}
+
+	cout << "Enter your phone number (e.g 22345678): ";
+
+	while (true)
+	{
+		cin >> tnum;
+		if (isvalid_data(tnum, R"re(\d{8})re"))
+		{ 
+			lv += tnum;
+			strcpy_s(patient.phone_number, lv.c_str());
+			break;
+		}
+		else
+		{
+
+			cout << "\nIncorrect input(s). Try again!\n";
+			cout << "Enter your LV phone number (e.g 22345678): ";
+		}
+	}
 	return patient;
 }
 
