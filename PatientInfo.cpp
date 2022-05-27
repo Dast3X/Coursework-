@@ -20,7 +20,7 @@ void ReadInfo(vector<PatientInfo>& patients_info)
 	ifstream fs;
 	fs.open(file, ifstream::in | ifstream::binary);
 	if (!fs.is_open())
-		cout << "error" << endl;
+		cout << "patients.dat - empty file" << endl;
 	else
 	{
 		cout << "Reading data in from a binary file!" << endl;
@@ -37,7 +37,7 @@ ostream& operator<<(ostream& os, const vector<PatientInfo>& patients_info)
 {
 	for (const auto& i : patients_info)
 	{
-		os << "\nName: " << i.name
+		os << "Name: " << i.name
 			<< "\nSurname: " << i.surname
 			<< "\nAge: " << i.age
 			<< "\nPersonal code: " << i.personal_code
@@ -60,7 +60,7 @@ PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 	while (true)
 	{
 		cin >> tage;
-		if (isvalid_data(tage, R"re(\d{2})re") || isvalid_data(tage, R"re(\d{1})re"))
+		if (isvalid_data(tage, R"re(\d{1,2})re"))
 		{
 			patient.age = stoi(tage);
 			break;
@@ -134,7 +134,7 @@ void FindPatient(vector<PatientInfo>& patients_info, string& code)
 	{
 		if (code == i.personal_code)
 		{
-			cout << "\nName: " << i.name
+			cout << "Name: " << i.name
 				<< "\nSurname: " << i.surname
 				<< "\nAge: " << i.age
 				<< "\nPersonal code: " << i.personal_code

@@ -18,7 +18,7 @@ void ReadReview(vector<TreatmentProcess>& patients_review)
 	ifstream fs;
 	fs.open(file, ifstream::in | ifstream::binary);
 	if (!fs.is_open())
-		cout << "error" << endl;
+		cout << "patients_treatment_review.dat - empty file" << endl;
 	else
 	{
 		cout << "Reading data in from a binary file!" << endl;

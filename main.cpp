@@ -56,8 +56,7 @@ void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>
 	{
 		string code;
 		option = '0';
-		cout << endl
-			<< "+---+----------------------------------+\n"
+		cout << "+---+----------------------------------+\n"
 			<< "| 1 | Get info of patients             |\n"
 			<< "+---+----------------------------------+\n"
 			<< "| 2 | Find problem(s) by personal code |\n"
@@ -72,10 +71,27 @@ void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>
 			PatientData(patients_info, patients_problem);
 			break;
 		case '2':
-			cout << "\nPlease Enter personal code: ";
-			cin >> code;
 			system("cls");
-			FindProblem(patients_problem, code);
+			cout << "Please Enter personal code: ";
+			while (true)
+			{
+				cin >> code;
+				if (code == "back") { break; }
+				if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
+				{
+					break;
+				}
+				else
+				{
+					system("cls");
+					cout << "Incorrect input(s). Try again!\n";
+					cout << "Enter your personal code: ";
+				}
+			}
+			if (code != "back") {
+				system("cls");
+				FindProblem(patients_problem, code);
+			}
 			break;
 		case '3':
 			system("cls");
@@ -109,8 +125,7 @@ int main()
 	while (option != '9')
 	{
 		option = '0';
-		cout << endl
-			<< "+---+----------------------------------+\n"
+		cout << "+---+----------------------------------+\n"
 			<< "| 1 | Fill your info                   |\n"
 			<< "+---+----------------------------------+\n"
 			<< "| 2 | Get your info                    |\n"
@@ -130,25 +145,46 @@ int main()
 			<< "| 9 | Quit                             |\n"
 			<< "+---+----------------------------------+\n\n";
 		cin >> option;
-		cin.ignore();
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		switch (option)
 		{
 
 		case '1':
+			system("CLS");
 			patients_info.push_back(GetInfo(patients_info));
 			break;
 
 		case '2':
-			cout << "\nPlease Enter personal code: ";
-			cin >> code;
-			FindPatient(patients_info, code);
+			system("cls");
+			cout << "Please Enter personal code: ";
+			while (true)
+			{
+				cin >> code;
+				if (code == "back") { break; }
+				if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
+				{
+					break;
+				}
+				else
+				{
+					system("cls");
+					cout << "Incorrect input(s). Try again!\n";
+					cout << "Enter your personal code: ";
+				}
+			}
+			system("cls");
+			if (code != "back")
+				FindPatient(patients_info, code);
 			break;
 
 		case '3':
+			system("cls");
 			cout << patients_info;
 			break;
 
 		case '4':
+			system("CLS");
 			try
 			{
 				patients_problem.push_back(GetProblem(patients_info));
@@ -160,12 +196,33 @@ int main()
 			break;
 
 		case '5':
-			cout << "\nPlease Enter personal code: ";
-			cin >> code;
-			FindProblem(patients_problem, code);
+			system("cls");
+			cout << "Please Enter personal code: ";
+			while (true)
+			{
+				cin >> code;
+				if (code == "back") { break; }
+				if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
+				{
+					break;
+				}
+				else
+				{
+					system("cls");
+					cout << "Incorrect input(s). Try again!\n";
+					cout << "Enter your personal code: ";
+				}
+			}
+			if (code != "back") 
+			{
+				system("cls");
+				FindProblem(patients_problem, code);
+			}	
+			system("cls");
 			break;
 
 		case '6':
+			system("CLS");
 			try
 			{
 				patients_review.push_back(GetReview(patients_info, patients_problem));
@@ -177,6 +234,7 @@ int main()
 			break;
 
 		case '7':
+			system("CLS");
 			PrintReviews(patients_info, patients_problem, patients_review);
 			break;
 		case '8':
@@ -189,17 +247,19 @@ int main()
 				cout << "Incorrect password\n";
 			break;
 		case '9':
-			cout << "\nYou have quitted from the program!\n";
+			system("CLS");
+			cout << "You have quitted from the program!\n";
 			break;
 		default:
-			cout << "\nERROR" << endl;
+			system("CLS");
+			cout << "ERROR" << endl;
 			if (option == '0')
 			{
 				cout << "Something goes wrong!" << endl;
 			}
 			break;
-
 		}
+
 	}
 	WriteProblem(patients_problem);
 	WriteInfo(patients_info);

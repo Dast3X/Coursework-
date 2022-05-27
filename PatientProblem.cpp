@@ -18,7 +18,7 @@ void ReadProblem(vector<PatientProblem>& patients_problem)
 	ifstream fs;
 	fs.open(file, ifstream::in | ifstream::binary);
 	if (!fs.is_open())
-		cout << "error" << endl;
+		cout << "patients_problems.dat - empty file" << endl;
 	else
 	{
 		cout << "Reading data in from a binary file!" << endl;
@@ -34,10 +34,25 @@ void ReadProblem(vector<PatientProblem>& patients_problem)
 PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 {
 	PatientProblem problem;
-	string tpersonal_code;
+	string tpersonal_code, tdate;
 	bool temp{ false };
+	system("cls");
 	cout << "Enter your personal code: ";
-	cin >> tpersonal_code;
+	while (true)
+	{
+		cin >> tpersonal_code;
+		if (isvalid_data(tpersonal_code, R"re(\d{6}-\d{5})re"))
+		{
+			break;
+		}
+		else
+		{
+			system("cls");
+			cout << "Incorrect input(s). Try again!\n";
+			cout << "Enter your personal code: ";
+		}
+	}
+
 	for (const auto& i : patients_info)
 	{
 		if (tpersonal_code == i.personal_code)
@@ -60,8 +75,24 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 		cin.getline(problem.problem, 256);
 		cout << "Please describe your problem: ";
 		cin.getline(problem.description, 2048);
-		cout << "Enter a starting date (dd/mm/yyyy): ";
-		cin >> problem.starting_date;
+		cout << "Enter a starting date (dd/mm/yyyy, dd.mm.yyyy, dd-mm-yyyy): ";
+
+		while (true)
+		{
+			cin >> tdate;
+			if (isvalid_data(tdate, R"re(^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$)re"))
+			{
+
+				strcpy_s(problem.starting_date, tdate.c_str());
+				break;
+			}
+			else
+			{
+
+				cout << "\nIncorrect input(s). Try again!\n";
+				cout << "Enter a starting date (dd/mm/yyyy): ";
+			}
+		}
 		return problem;
 	}
 
@@ -74,7 +105,7 @@ void FindProblem(vector<PatientProblem>& patients_problem, string& code)
 	{
 		if (code == i.personal_code)
 		{
-			cout << "\nPersonal_code: " << i.personal_code
+			cout << "Personal_code: " << i.personal_code
 				<< "\nStarting date: " << i.starting_date
 				<< "\nProblem: " << i.problem
 				<< "\nDescription: " << i.description
