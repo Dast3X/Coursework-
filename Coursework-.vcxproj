@@ -117,6 +117,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>E:\VS\Projects\Coursework-\libfort-develop\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,6 +134,8 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>E:\VS\Projects\Coursework-\libfort-develop\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,7 +145,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="libfort-develop\lib\fort.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PatientInfo.cpp" />
+    <ClCompile Include="PatientProblem.cpp" />
+    <ClCompile Include="TreatmentProcess.cpp" />
+    <ClCompile Include="Validation.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libfort-develop\lib\fort.hpp" />
+    <ClInclude Include="PatientInfo.h" />
+    <ClInclude Include="PatientProblem.h" />
+    <ClInclude Include="TreatmentProcess.h" />
+    <ClInclude Include="Validation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
