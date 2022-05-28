@@ -8,12 +8,11 @@
 
 struct PatientInfo
 {
-	char name[64]{};
-	char surname[64]{};
+	char name[16]{};
+	char surname[16]{};
 	unsigned short age{};
-	char personal_code[64]{};
-	char phone_number[64]{};
-
+	char personal_code[16]{};
+	char phone_number[16]{};
 };
 
 void WriteInfo(std::vector<PatientInfo>& patients_info);

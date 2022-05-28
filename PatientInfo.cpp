@@ -52,9 +52,9 @@ PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 	string tpc, tnum, tage, lv{"+371"};
 	PatientInfo patient;
 	cout << "Enter your name: ";
-	cin >> patient.name;
+	cin.getline(patient.name, 16);
 	cout << "Enter your surname: ";
-	cin >> patient.surname;
+	cin.getline(patient.surname, 16);
 	cout << "Enter your age: ";
 
 	while (true)

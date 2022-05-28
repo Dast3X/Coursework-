@@ -152,11 +152,13 @@ int main()
 
 		case '1':
 			system("CLS");
+			cout << "Fill your info\n";
 			patients_info.push_back(GetInfo(patients_info));
 			break;
 
 		case '2':
 			system("cls");
+			cout << "Get your info\n";
 			cout << "Please Enter personal code: ";
 			while (true)
 			{
@@ -185,6 +187,7 @@ int main()
 
 		case '4':
 			system("CLS");
+			cout << "Fill patient problem \n";
 			try
 			{
 				patients_problem.push_back(GetProblem(patients_info));
@@ -197,6 +200,7 @@ int main()
 
 		case '5':
 			system("cls");
+			cout << "Find problem(s) by personal code\n";
 			cout << "Please Enter personal code: ";
 			while (true)
 			{
@@ -218,11 +222,11 @@ int main()
 				system("cls");
 				FindProblem(patients_problem, code);
 			}	
-			system("cls");
 			break;
 
 		case '6':
 			system("CLS");
+			cout << "Evaluate our company\n";
 			try
 			{
 				patients_review.push_back(GetReview(patients_info, patients_problem));

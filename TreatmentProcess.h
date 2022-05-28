@@ -14,10 +14,11 @@
 
 struct TreatmentProcess
 {
-	char personal_code[64]{};
-	char discharge_date[32]{};
-	char treatment[2048]{};
-	char comment[2048]{};
+	char personal_code[16]{};
+	char discharge_date[16]{};
+	char treatment[256]{};
+	char comment[1024]{};
+	char problem[24]{};
 };
 
 

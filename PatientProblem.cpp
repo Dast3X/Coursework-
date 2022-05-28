@@ -36,7 +36,6 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 	PatientProblem problem;
 	string tpersonal_code, tdate;
 	bool temp{ false };
-	system("cls");
 	cout << "Enter your personal code: ";
 	while (true)
 	{
@@ -72,9 +71,9 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 		cout << "\nLet us begin!\n";
 		cout << "What is your problem?: ";
 		cin.ignore();
-		cin.getline(problem.problem, 256);
+		cin.getline(problem.problem, 24);
 		cout << "Please describe your problem: ";
-		cin.getline(problem.description, 2048);
+		cin.getline(problem.description, 1024);
 		cout << "Enter a starting date (dd/mm/yyyy, dd.mm.yyyy, dd-mm-yyyy): ";
 
 		while (true)

@@ -37,8 +37,22 @@ TreatmentProcess GetReview(const vector<PatientInfo>& patients_info, vector<Pati
 	string tpersonal_code, tproblem;
 	bool temp{ false };
 	cout << "Enter your personal code: ";
-	cin >> tpersonal_code;
-	cout << "Choose your problem \n";
+	while (true)
+	{
+		cin >> tpersonal_code;
+		if (isvalid_data(tpersonal_code, R"re(\d{6}-\d{5})re"))
+		{
+			break;
+		}
+		else
+		{
+			system("cls");
+			cout << "Incorrect input(s). Try again!\n";
+			cout << "Enter your personal code: ";
+		}
+	}
+	system("cls");
+	cout << "Choose your problem: \n";
 	for (const auto& k : patients_problem)
 	{
 		if (k.personal_code == tpersonal_code && k.sick == true)
@@ -53,6 +67,7 @@ TreatmentProcess GetReview(const vector<PatientInfo>& patients_info, vector<Pati
 		{
 			temp = true;
 			i.sick = false;
+			strcpy_s((review.problem), (i.problem));
 			break;
 		}
 	}
@@ -68,37 +83,66 @@ TreatmentProcess GetReview(const vector<PatientInfo>& patients_info, vector<Pati
 		cin >> review.discharge_date;
 		cout << "Describe the treatment process: ";
 		cin.ignore();
-		cin.getline(review.treatment, 2048);
+		cin.getline(review.treatment, 256);
 		cout << "What'd you recommend?: ";
-		cin.getline(review.comment, 2048);
+		cin.getline(review.comment, 1024);
 		return review;
 	}
 }
 
+
 void PrintReviews(const vector<PatientInfo>& p_info, const vector<PatientProblem>& p_problem, const vector<TreatmentProcess>& p_review)
 {
 	cout << "Reviews:\n\n";
-	for (const auto& i : p_review)
+	if (p_review.size() == 0)
+		cout << "We don't have reviews yet :( why it is so?\n";
+	else
 	{
-		for (const auto& j : p_info)
+		for (const auto& i : p_review)
 		{
-			if (string(i.personal_code) == string(j.personal_code))
+			for (const auto& j : p_info)
 			{
-				cout << "\nPatient: " << j.name << " (" << j.age << ") " << j.surname << '\n';
-				break;
+				if (string(j.personal_code) == string(i.personal_code))
+				{
+					cout << "Patient: " << j.name << " (" << j.age << ") " << j.surname << '\n';
+				}
+			}
+			for (const auto& k : p_problem)
+			{
+				if (string(i.personal_code) == string(k.personal_code) && string(i.problem) == string(k.problem))
+				{
+					cout << "Problem: " << k.problem << '\n'
+						<< "Date: " << k.starting_date << " - " << i.discharge_date << '\n';
+					cout << "Treatment: " << i.treatment << '\n'
+						<< "Recommendation: " << i.comment << '\n' << '\n';
+					break;
+				}
 			}
 		}
-		for (const auto& j : p_problem)
-		{
-			if (string(i.personal_code) == string(j.personal_code))
-			{
-				cout << "Problem: " << j.problem << '\n'
-					<< "Date: " << j.starting_date << " - " << i.discharge_date << '\n' << '\n';
-			}
-		}
-		cout << "Treatment: " << i.treatment << '\n'
-			<< "Recommendation: " << i.comment << '\n';
-		return;
 	}
-	cout << "We don't have reviews yet :( why it is so?";
 }
+
+
+
+
+
+//for (const auto& j : p_info)
+//{
+//	if (string(i.personal_code) == string(j.personal_code))
+//	{
+//		cout << "Patient: " << j.name << " (" << j.age << ") " << j.surname << '\n';
+//		break;
+//	}
+//}
+//for (const auto& k : p_problem)
+//{
+//	if (string(i.personal_code) == string(k.personal_code))
+//	{
+//
+//		cout << "Problem: " << k.problem << '\n'
+//			<< "Date: " << k.starting_date << " - " << i.discharge_date << '\n';
+//		break;
+//	}
+//}
+//cout << "Treatment: " << i.treatment << '\n'
+//<< "Recommendation: " << i.comment << '\n' << '\n';

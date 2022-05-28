@@ -11,10 +11,10 @@
 
 struct PatientProblem
 {
-	char personal_code[64]{};
-	char starting_date[32]{};
-	char problem[256]{};
-	char description[2048]{};
+	char personal_code[16]{};
+	char starting_date[16]{};
+	char problem[24]{};
+	char description[1024]{};
 	bool sick{ false };
 };
 
