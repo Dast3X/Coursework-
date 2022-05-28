@@ -1,8 +1,6 @@
 #include "PatientInfo.h"
-
 using namespace std;
-
-
+#define BUFFERCLEAR cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 void WriteInfo(vector<PatientInfo>& patients_info)
 {
@@ -51,33 +49,17 @@ PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 {
 	string tpc, tnum, tage, lv{"+371"};
 	PatientInfo patient;
-	cout << "Enter your name: ";
-	cin.getline(patient.name, 16);
-	cout << "Enter your surname: ";
-	cin.getline(patient.surname, 16);
-	cout << "Enter your age: ";
 
-	while (true)
-	{
-		cin >> tage;
-		if (isvalid_data(tage, R"re(\d{1,2})re"))
-		{
-			patient.age = stoi(tage);
-			break;
-		}
-		else
-		{
-			cout << "\nIncorrect input(s). Try again!\n";
-			cout << "Enter your age: ";
-		}
-	}
 	cout << "Enter your personal code (e.g 123456-54321): ";
-		
-	
 	while (true)
 	{
 		bool exist = false;
 		cin >> tpc;
+		BUFFERCLEAR
+		if (tpc == "back")
+		{
+			throw runtime_error("\n");
+		}
 		if (isvalid_data(tpc, R"re(\d{6}-\d{5})re"))
 		{
 			for (const auto& i : patient_info)
@@ -106,12 +88,33 @@ PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 			cout << "Enter your personal code (e.g 123456-54321): ";
 		}
 	}
-
-	cout << "Enter your phone number (e.g 22345678): ";
+	cout << "Enter your name: ";
+	cin.getline(patient.name, 16);
+	cout << "Enter your surname: ";
+	cin.getline(patient.surname, 16);
+	cout << "Enter your age: ";
 
 	while (true)
 	{
+		cin >> tage;
+		BUFFERCLEAR
+		if (isvalid_data(tage, R"re(\d{1,2})re"))
+		{
+			patient.age = stoi(tage);
+			break;
+		}
+		else
+		{
+			cout << "\nIncorrect input(s). Try again!\n";
+			cout << "Enter your age: ";
+		}
+	}
+
+	cout << "Enter your phone number (e.g 22345678): ";
+	while (true)
+	{
 		cin >> tnum;
+		BUFFERCLEAR
 		if (isvalid_data(tnum, R"re(\d{8})re"))
 		{ 
 			lv += tnum;
@@ -128,8 +131,32 @@ PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 	return patient;
 }
 
-void FindPatient(vector<PatientInfo>& patients_info, string& code)
+void FindPatient(vector<PatientInfo>& patients_info)
 {
+	string code;
+	cout << "Get your info\n";
+	cout << "Please Enter personal code: ";
+	while (true)
+	{
+		cin >> code;
+		BUFFERCLEAR
+		if (code == "back") { break; }
+		if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
+		{
+			break;
+		}
+		else
+		{
+			system("cls");
+			cout << "Incorrect input(s). Try again!\n";
+			cout << "Enter your personal code: ";
+		}
+	}
+	if (code == "back")
+	{
+		return;
+	}
+	system("cls");
 	for (const auto& i : patients_info)
 	{
 		if (code == i.personal_code)

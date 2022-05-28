@@ -1,5 +1,5 @@
 #include "PatientProblem.h"
-
+#define BUFFERCLEAR cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 using namespace std;
 
 void WriteProblem(vector<PatientProblem>& patients_problem)
@@ -40,9 +40,15 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 	while (true)
 	{
 		cin >> tpersonal_code;
+		BUFFERCLEAR
 		if (isvalid_data(tpersonal_code, R"re(\d{6}-\d{5})re"))
 		{
 			break;
+		}
+		else if (tpersonal_code == "back")
+		{
+			system("cls");
+			throw runtime_error("");
 		}
 		else
 		{
@@ -79,8 +85,8 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 		while (true)
 		{
 			cin >> tdate;
-			if (isvalid_data(tdate, R"re(^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$)re"))
-			{
+			BUFFERCLEAR
+			if (isvalid_data(tdate, R"re(^(?:(?:31(\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$)re")) {
 
 				strcpy_s(problem.starting_date, tdate.c_str());
 				break;
@@ -97,12 +103,31 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 
 }
 
-void FindProblem(vector<PatientProblem>& patients_problem, string& code)
+void FindProblem(vector<PatientProblem>& patients_problem)
 {
+	string tpersonal_code;
+	cout << "Please Enter personal code: ";
+	while (true)
+	{
+		cin >> tpersonal_code;
+		BUFFERCLEAR
+		if (tpersonal_code == "back") { system("cls");  return; }
+		if (isvalid_data(tpersonal_code, R"re(\d{6}-\d{5})re"))
+		{
+			break;
+		}
+		else
+		{
+			system("cls");
+			cout << "Incorrect input(s). Try again!\n";
+			cout << "Enter your personal code: ";
+		}
+	}
+	system("cls");
 	bool temp{ false };
 	for (const auto& i : patients_problem)
 	{
-		if (code == i.personal_code)
+		if (tpersonal_code == i.personal_code)
 		{
 			cout << "Personal_code: " << i.personal_code
 				<< "\nStarting date: " << i.starting_date

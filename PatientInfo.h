@@ -23,4 +23,4 @@ std::ostream& operator<<(std::ostream& os, const std::vector<PatientInfo>& patie
 
 PatientInfo GetInfo(const std::vector<PatientInfo>& patient_info);
 
-void FindPatient(std::vector<PatientInfo>& patients_info, std::string& code);
+void FindPatient(std::vector<PatientInfo>& patients_info);

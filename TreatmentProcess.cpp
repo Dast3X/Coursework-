@@ -1,5 +1,5 @@
 #include "TreatmentProcess.h"
-
+#define BUFFERCLEAR cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 using namespace std;
 
 void WriteReview(vector<TreatmentProcess>& patients_review)
@@ -34,7 +34,7 @@ void ReadReview(vector<TreatmentProcess>& patients_review)
 TreatmentProcess GetReview(const vector<PatientInfo>& patients_info, vector<PatientProblem>& patients_problem)
 {
 	TreatmentProcess review;
-	string tpersonal_code, tproblem;
+	string tpersonal_code, tproblem, tdate;
 	bool temp{ false };
 	cout << "Enter your personal code: ";
 	while (true)
@@ -80,7 +80,22 @@ TreatmentProcess GetReview(const vector<PatientInfo>& patients_info, vector<Pati
 		strcpy_s(review.personal_code, tpersonal_code.c_str());
 		cout << "\nLet us begin!\n";
 		cout << "Enter a discharge date (dd/mm/yyyy): ";
-		cin >> review.discharge_date;
+		while (true)
+		{
+			cin >> tdate;
+			if (isvalid_data(tdate, R"re(^(?:(?:31(\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$)re"))
+			{
+
+				strcpy_s(review.discharge_date, tdate.c_str());
+				break;
+			}
+			else
+			{
+
+				cout << "\nIncorrect input(s). Try again!\n";
+				cout << "Enter a starting date (dd/mm/yyyy): ";
+			}
+		}
 		cout << "Describe the treatment process: ";
 		cin.ignore();
 		cin.getline(review.treatment, 256);
@@ -121,28 +136,3 @@ void PrintReviews(const vector<PatientInfo>& p_info, const vector<PatientProblem
 		}
 	}
 }
-
-
-
-
-
-//for (const auto& j : p_info)
-//{
-//	if (string(i.personal_code) == string(j.personal_code))
-//	{
-//		cout << "Patient: " << j.name << " (" << j.age << ") " << j.surname << '\n';
-//		break;
-//	}
-//}
-//for (const auto& k : p_problem)
-//{
-//	if (string(i.personal_code) == string(k.personal_code))
-//	{
-//
-//		cout << "Problem: " << k.problem << '\n'
-//			<< "Date: " << k.starting_date << " - " << i.discharge_date << '\n';
-//		break;
-//	}
-//}
-//cout << "Treatment: " << i.treatment << '\n'
-//<< "Recommendation: " << i.comment << '\n' << '\n';

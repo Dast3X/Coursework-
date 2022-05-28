@@ -7,7 +7,7 @@
 #include "PatientProblem.h"
 #include "TreatmentProcess.h"
 #include <regex>
-
+#define BUFFERCLEAR	cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 
 using namespace std;
@@ -49,63 +49,59 @@ void PatientData(const vector<PatientInfo>& patients_info, const vector<PatientP
 }
 void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>& patients_problem)
 {
-
-	system("CLS");
+	string password;
 	char option = '0';
-	while (option != '7')
-	{
-		string code;
-		option = '0';
-		cout << "+---+----------------------------------+\n"
-			<< "| 1 | Get info of patients             |\n"
-			<< "+---+----------------------------------+\n"
-			<< "| 2 | Find problem(s) by personal code |\n"
-			<< "+---+----------------------------------+\n"
-			<< "| 3 | Quit                             |\n"
-			<< "+---+----------------------------------+\n\n";
-		cin >> option;
-		switch (option)
+	cout << "password: ";
+	cin >> password;
+	system("cls");
+	if (password == "12345") {
+		while (option != '7')
 		{
-		case '1':
-			system("cls");
-			PatientData(patients_info, patients_problem);
-			break;
-		case '2':
-			system("cls");
-			cout << "Please Enter personal code: ";
-			while (true)
+			string code;
+			option = '0';
+			cout << "+---+----------------------------------+\n"
+				<< "| 1 | Get info of patients             |\n"
+				<< "+---+----------------------------------+\n"
+				<< "| 2 | Find problem(s) by personal code |\n"
+				<< "+---+----------------------------------+\n"
+				<< "| 3 | Quit                             |\n"
+				<< "+---+----------------------------------+\n\n";
+			cin >> option;
+			switch (option)
 			{
-				cin >> code;
-				if (code == "back") { break; }
-				if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
-				{
-					break;
-				}
-				else
-				{
-					system("cls");
-					cout << "Incorrect input(s). Try again!\n";
-					cout << "Enter your personal code: ";
-				}
-			}
-			if (code != "back") {
+			case '1':
 				system("cls");
-				FindProblem(patients_problem, code);
-			}
-			break;
-		case '3':
-			system("cls");
-			cout << "\nYou have quitted menu!\n";
-			return;
-		default:
-			cout << "\nERROR" << endl;
-			if (option == '0')
-			{
-				cout << "Something goes wrong!" << endl;
+				PatientData(patients_info, patients_problem);
+				break;
+			case '2':
+				system("cls");
+				FindProblem(patients_problem);
+				break;
+			case '3':
+				system("cls");
+				cout << "\nYou have quitted menu!\n";
 				return;
+			default:
+				cout << "\nERROR" << endl;
+				if (option == '0')
+				{
+					cout << "Something goes wrong!" << endl;
+					return;
+				}
+				break;
 			}
-			break;
 		}
+	}
+	if (password == "back")
+	{
+		system("CLS");
+		return;
+	}
+	else
+	{
+		system("cls");
+		cout << "Incorrect password\n";
+		return;
 	}
 }
 
@@ -113,11 +109,9 @@ int main()
 {
 	system("chcp 65001");
 	system("cls");
-	string password;
 	vector<PatientInfo> patients_info;
 	vector<PatientProblem> patients_problem;
 	vector<TreatmentProcess> patients_review;
-	string code;
 	ReadInfo(patients_info);
 	ReadProblem(patients_problem);
 	ReadReview(patients_review);
@@ -145,39 +139,25 @@ int main()
 			<< "| 9 | Quit                             |\n"
 			<< "+---+----------------------------------+\n\n";
 		cin >> option;
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		BUFFERCLEAR
 		switch (option)
 		{
-
 		case '1':
 			system("CLS");
 			cout << "Fill your info\n";
-			patients_info.push_back(GetInfo(patients_info));
+			try
+			{
+				patients_info.push_back(GetInfo(patients_info));
+			}
+			catch (const exception& e)
+			{
+				cerr << e.what();
+			}
 			break;
 
 		case '2':
 			system("cls");
-			cout << "Get your info\n";
-			cout << "Please Enter personal code: ";
-			while (true)
-			{
-				cin >> code;
-				if (code == "back") { break; }
-				if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
-				{
-					break;
-				}
-				else
-				{
-					system("cls");
-					cout << "Incorrect input(s). Try again!\n";
-					cout << "Enter your personal code: ";
-				}
-			}
-			system("cls");
-			if (code != "back")
-				FindPatient(patients_info, code);
+			FindPatient(patients_info);
 			break;
 
 		case '3':
@@ -201,27 +181,7 @@ int main()
 		case '5':
 			system("cls");
 			cout << "Find problem(s) by personal code\n";
-			cout << "Please Enter personal code: ";
-			while (true)
-			{
-				cin >> code;
-				if (code == "back") { break; }
-				if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
-				{
-					break;
-				}
-				else
-				{
-					system("cls");
-					cout << "Incorrect input(s). Try again!\n";
-					cout << "Enter your personal code: ";
-				}
-			}
-			if (code != "back") 
-			{
-				system("cls");
-				FindProblem(patients_problem, code);
-			}	
+			FindProblem(patients_problem);
 			break;
 
 		case '6':
@@ -243,12 +203,7 @@ int main()
 			break;
 		case '8':
 			system("CLS");
-			cout << "password: ";
-			cin >> password;
-			if (password == "12345")
-				Doctormenu(patients_info, patients_problem);
-			else
-				cout << "Incorrect password\n";
+			Doctormenu(patients_info, patients_problem);
 			break;
 		case '9':
 			system("CLS");

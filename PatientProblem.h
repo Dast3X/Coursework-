@@ -24,4 +24,4 @@ void ReadProblem(std::vector<PatientProblem>& patients_problem);
 
 PatientProblem GetProblem(const std::vector<PatientInfo>& patients_info);
 
-void FindProblem(std::vector<PatientProblem>& patients_problem, std::string& code);
+void FindProblem(std::vector<PatientProblem>& patients_problem);
