@@ -30,16 +30,16 @@ void PatientData(const vector<PatientInfo>& patients_info, const vector<PatientP
 
 	table << fort::header
 		<< "Name" << "Surname" << "Personal code" << "Date" << "Problem" << fort::endr;
-
-
+	string temp;
 	for (const auto& i : patients_info)
 	{
 		for (const auto& j : patients_problem)
 		{
 			if (string(i.personal_code) == string(j.personal_code) && j.sick == true)
 			{
+				temp = string(j.problem, 11);
 				table << i.name << i.surname << i.personal_code;
-				table << j.starting_date << j.problem << fort::endr;
+				table << j.starting_date << temp << fort::endr;
 
 			}
 		}

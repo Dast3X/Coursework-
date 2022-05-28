@@ -76,11 +76,10 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 		strcpy_s(problem.personal_code, tpersonal_code.c_str());
 		cout << "\nLet us begin!\n";
 		cout << "What is your problem?: ";
-		cin.ignore();
 		cin.getline(problem.problem, 24);
 		cout << "Please describe your problem: ";
 		cin.getline(problem.description, 1024);
-		cout << "Enter a starting date (dd/mm/yyyy, dd.mm.yyyy, dd-mm-yyyy): ";
+		cout << "Enter a starting date (dd.mm.yyyy): ";
 
 		while (true)
 		{

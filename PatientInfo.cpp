@@ -90,8 +90,10 @@ PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 	}
 	cout << "Enter your name: ";
 	cin.getline(patient.name, 16);
+	BUFFERCLEAR
 	cout << "Enter your surname: ";
 	cin.getline(patient.surname, 16);
+	BUFFERCLEAR
 	cout << "Enter your age: ";
 
 	while (true)
