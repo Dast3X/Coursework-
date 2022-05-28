@@ -10,9 +10,15 @@
 #include <algorithm>
 #define BUFFERCLEAR	cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-
 using namespace std;
 
+void Quiantity(const vector<PatientInfo>& p_info, const vector<PatientProblem>& p_problem, const vector<TreatmentProcess>& p_review)
+{
+
+	cout << "Amount of patients: " << p_info.size();
+	cout << "\nAmount of problems: " << p_problem.size();
+	cout << "\nAmount of reviews: " << p_review.size() << '\n';
+}
 void PatientData(const vector<PatientInfo>& patients_info, const vector<PatientProblem>& patients_problem)
 {
 
@@ -35,7 +41,7 @@ void PatientData(const vector<PatientInfo>& patients_info, const vector<PatientP
 		{
 			if (string(i.personal_code) == string(j.personal_code) && j.sick == true)
 			{
-				temp = string(j.problem, 11);
+				temp = string(j.problem, 10);
 				table << i.name << i.surname << i.personal_code;
 				table << j.starting_date << temp << fort::endr;
 
@@ -45,7 +51,7 @@ void PatientData(const vector<PatientInfo>& patients_info, const vector<PatientP
 	}
 	cout << table.to_string() << endl;
 }
-void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>& patients_problem)
+void Doctormenu(vector<PatientInfo>& p_info, vector<PatientProblem>& p_problem, vector<TreatmentProcess>& p_review)
 {
 	string password;
 	char option = '0';
@@ -62,6 +68,8 @@ void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>
 				<< "+---+----------------------------------+\n"
 				<< "| 2 | Find problem(s) by personal code |\n"
 				<< "+---+----------------------------------+\n"
+				<< "| 3 | Quantity                         |\n"
+				<< "+---+----------------------------------+\n"
 				<< "| s | Sorting                          |\n"
 				<< "+---+----------------------------------+\n"
 				<< "| q | Quit                             |\n"
@@ -71,18 +79,20 @@ void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>
 			{
 			case '1':
 				system("cls");
-				PatientData(patients_info, patients_problem);
+				PatientData(p_info, p_problem);
 				break;
 			case '2':
 				system("cls");
-				FindProblem(patients_problem);
+				FindProblem(p_problem);
+				break;
+				for (const auto& i : p_info)
+					cout << i.name << " " << i.name << " " << i.name << '\n';
+			case '3':
+				system("cls");
+				Quiantity(p_info, p_problem, p_review);
 				break;
 			case 's':
-				sort(patients_info.begin(), patients_info.end());
-				for (int i = 0; i < patients_info.size(); i++)
-				cout << patients_info[i].name << ", ";
-
-				cout << endl;
+				
 				break;
 			case 'q':
 				system("cls");
@@ -210,7 +220,7 @@ int main()
 			break;
 		case '8':
 			system("CLS");
-			Doctormenu(patients_info, patients_problem);
+			Doctormenu(patients_info, patients_problem, patients_review);
 			break;
 		case 'q':
 			system("CLS");
