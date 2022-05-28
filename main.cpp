@@ -7,13 +7,11 @@
 #include "PatientProblem.h"
 #include "TreatmentProcess.h"
 #include <regex>
+#include <algorithm>
 #define BUFFERCLEAR	cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 
 using namespace std;
-
-
-
 
 void PatientData(const vector<PatientInfo>& patients_info, const vector<PatientProblem>& patients_problem)
 {
@@ -58,13 +56,15 @@ void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>
 		while (option != '7')
 		{
 			string code;
-			option = '0';
+			option = 'q';
 			cout << "+---+----------------------------------+\n"
 				<< "| 1 | Get info of patients             |\n"
 				<< "+---+----------------------------------+\n"
 				<< "| 2 | Find problem(s) by personal code |\n"
 				<< "+---+----------------------------------+\n"
-				<< "| 3 | Quit                             |\n"
+				<< "| s | Sorting                          |\n"
+				<< "+---+----------------------------------+\n"
+				<< "| q | Quit                             |\n"
 				<< "+---+----------------------------------+\n\n";
 			cin >> option;
 			switch (option)
@@ -77,7 +77,14 @@ void Doctormenu(const vector<PatientInfo>& patients_info, vector<PatientProblem>
 				system("cls");
 				FindProblem(patients_problem);
 				break;
-			case '3':
+			case 's':
+				sort(patients_info.begin(), patients_info.end());
+				for (int i = 0; i < patients_info.size(); i++)
+				cout << patients_info[i].name << ", ";
+
+				cout << endl;
+				break;
+			case 'q':
 				system("cls");
 				cout << "\nYou have quitted menu!\n";
 				return;
@@ -136,7 +143,7 @@ int main()
 			<< "+---+----------------------------------+\n"
 			<< "| 8 | Doctor menu                      |\n"
 			<< "+---+----------------------------------+\n"
-			<< "| 9 | Quit                             |\n"
+			<< "| q | Quit                             |\n"
 			<< "+---+----------------------------------+\n\n";
 		cin >> option;
 		BUFFERCLEAR
@@ -205,7 +212,7 @@ int main()
 			system("CLS");
 			Doctormenu(patients_info, patients_problem);
 			break;
-		case '9':
+		case 'q':
 			system("CLS");
 			cout << "You have quitted from the program!\n";
 			break;
