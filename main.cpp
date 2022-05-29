@@ -2,13 +2,15 @@
 #include <string>
 #include <vector>
 #include <exception>
+#include <regex>
+#include <algorithm>
 #include "fort.hpp"
 #include "PatientInfo.h"
 #include "PatientProblem.h"
 #include "TreatmentProcess.h"
-#include <regex>
-#include <algorithm>
 #include "DoctorMenu.h"
+
+
 
 #define BUFFERCLEAR	cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
@@ -25,9 +27,8 @@ int main()
 	ReadProblem(patients_problem);
 	ReadReview(patients_review);
 	char option = '0';
-	while (option != '9')
+	while (option != 'q')
 	{
-		option = '0';
 		cout << "+---+----------------------------------+\n"
 			<< "| 1 | Fill your info                   |\n"
 			<< "+---+----------------------------------+\n"
@@ -47,6 +48,7 @@ int main()
 			<< "+---+----------------------------------+\n"
 			<< "| q | Quit                             |\n"
 			<< "+---+----------------------------------+\n\n";
+		cout << "Input: ";
 		cin >> option;
 		BUFFERCLEAR
 		switch (option)
@@ -62,16 +64,25 @@ int main()
 			{
 				cerr << e.what();
 			}
+			system("cls");
 			break;
 
 		case '2':
 			system("cls");
 			FindPatient(patients_info);
+			cout << "\n\nAny input:";
+			cin.ignore();
+			BUFFERCLEAR
+			system("cls");
 			break;
 
 		case '3':
 			system("cls");
 			cout << patients_info;
+			cout << "\n\nAny input:";
+			cin.ignore();
+			BUFFERCLEAR
+			system("cls");
 			break;
 
 		case '4':
@@ -91,6 +102,10 @@ int main()
 			system("cls");
 			cout << "Find problem(s) by personal code\n";
 			FindProblem(patients_problem);
+			cout << "\n\nAny input:";
+			cin.ignore();
+			BUFFERCLEAR
+			system("cls");
 			break;
 
 		case '6':
@@ -98,17 +113,22 @@ int main()
 			cout << "Evaluate our company\n";
 			try
 			{
-				patients_review.push_back(GetReview(patients_info, patients_problem));
+				patients_review.push_back(GetReview(patients_problem));
 			}
 			catch (const exception& e)
 			{
 				cerr << e.what();
 			}
+			system("cls");
 			break;
 
 		case '7':
 			system("CLS");
 			PrintReviews(patients_info, patients_problem, patients_review);
+			cout << "\n\nAny input:";
+			cin.ignore();
+			BUFFERCLEAR
+				system("cls");
 			break;
 		case '8':
 			system("CLS");
@@ -117,7 +137,10 @@ int main()
 		case 'q':
 			system("CLS");
 			cout << "You have quitted from the program!\n";
-			break;
+			WriteProblem(patients_problem);
+			WriteInfo(patients_info);
+			WriteReview(patients_review);
+			return 0;
 		default:
 			system("CLS");
 			cout << "ERROR" << endl;

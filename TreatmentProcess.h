@@ -28,6 +28,6 @@ void WriteReview(std::vector<TreatmentProcess>& patients_review);
 
 void ReadReview(std::vector<TreatmentProcess>& patients_review);
 
-TreatmentProcess GetReview(const std::vector<PatientInfo>& patients_info, std::vector<PatientProblem>& patients_problem);
+TreatmentProcess GetReview(std::vector<PatientProblem>& patients_problem);
 
 void PrintReviews(const std::vector<PatientInfo>& p_info, const std::vector<PatientProblem>& p_problem, const std::vector<TreatmentProcess>& p_review);
