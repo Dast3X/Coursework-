@@ -79,7 +79,7 @@ TreatmentProcess GetReview(const vector<PatientInfo>& patients_info, vector<Pati
 	{
 		strcpy_s(review.personal_code, tpersonal_code.c_str());
 		cout << "\nLet us begin!\n";
-		cout << "Enter a discharge date (dd/mm/yyyy): ";
+		cout << "Enter a discharge date (dd.mm.yyyy): ";
 		while (true)
 		{
 			cin >> tdate;

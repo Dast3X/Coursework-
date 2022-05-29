@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DoctorMenu.cpp" />
     <ClCompile Include="libfort-develop\lib\fort.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PatientInfo.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Validation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoctorMenu.h" />
     <ClInclude Include="libfort-develop\lib\fort.hpp" />
     <ClInclude Include="PatientInfo.h" />
     <ClInclude Include="PatientProblem.h" />
