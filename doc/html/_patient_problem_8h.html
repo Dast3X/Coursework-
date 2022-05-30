@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Medical records: E:/VS/Projects/Coursework-/PatientProblem.h File Reference</title>
+<title>Medical records: PatientProblem.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('_patient_problem_8h.html',''); initRes
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">E:/VS/Projects/Coursework-/PatientProblem.h File Reference</div></div>
+  <div class="headertitle"><div class="title">PatientProblem.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
@@ -118,12 +118,16 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a53543b19bf5960ee1b6b174c55f96cdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_patient_problem_8h.html#a53543b19bf5960ee1b6b174c55f96cdf">WriteProblem</a> (std::vector&lt; <a class="el" href="struct_patient_problem.html">PatientProblem</a> &gt; &amp;patients_problem)</td></tr>
+<tr class="memdesc:a53543b19bf5960ee1b6b174c55f96cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for writing patient's problems out into a binary file  <a href="_patient_problem_8h.html#a53543b19bf5960ee1b6b174c55f96cdf">More...</a><br /></td></tr>
 <tr class="separator:a53543b19bf5960ee1b6b174c55f96cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2369da75d0c4298cd8910686a56dfef8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_patient_problem_8h.html#a2369da75d0c4298cd8910686a56dfef8">ReadProblem</a> (std::vector&lt; <a class="el" href="struct_patient_problem.html">PatientProblem</a> &gt; &amp;patients_problem)</td></tr>
+<tr class="memdesc:a2369da75d0c4298cd8910686a56dfef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for reading data in from a binary file  <a href="_patient_problem_8h.html#a2369da75d0c4298cd8910686a56dfef8">More...</a><br /></td></tr>
 <tr class="separator:a2369da75d0c4298cd8910686a56dfef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af66283d91d03591244e94100196aa9af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_patient_problem.html">PatientProblem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_patient_problem_8h.html#af66283d91d03591244e94100196aa9af">GetProblem</a> (const std::vector&lt; <a class="el" href="struct_patient_info.html">PatientInfo</a> &gt; &amp;patients_info)</td></tr>
+<tr class="memdesc:af66283d91d03591244e94100196aa9af"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function asks patient to input personal code.  <a href="_patient_problem_8h.html#af66283d91d03591244e94100196aa9af">More...</a><br /></td></tr>
 <tr class="separator:af66283d91d03591244e94100196aa9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a5cdf04815184404762639ff88357b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_patient_problem_8h.html#a5a5cdf04815184404762639ff88357b9">FindProblem</a> (std::vector&lt; <a class="el" href="struct_patient_problem.html">PatientProblem</a> &gt; &amp;patients_problem)</td></tr>
+<tr class="memdesc:a5a5cdf04815184404762639ff88357b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for finding patient's problem(s) by personal code.  <a href="_patient_problem_8h.html#a5a5cdf04815184404762639ff88357b9">More...</a><br /></td></tr>
 <tr class="separator:a5a5cdf04815184404762639ff88357b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -143,6 +147,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Function for finding patient's problem(s) by personal code. </p>
+<p >You can write 'back' to return </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">patients_problem</td><td>is vector of <a class="el" href="struct_patient_problem.html">PatientProblem</a> structure which temporary store info about problems</td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="af66283d91d03591244e94100196aa9af" name="af66283d91d03591244e94100196aa9af"></a>
@@ -160,6 +173,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function asks patient to input personal code. </p>
+<p >And if it is in the patients_info patient will be allowed to fill problem. You can write 'back' to return </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">patients_info</td><td>is vector of <a class="el" href="struct_patient_info.html">PatientInfo</a> structure which temporary store info about patients</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_patient_problem.html">PatientProblem</a></dd></dl>
 
 </div>
 </div>
@@ -179,6 +202,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This function is for reading data in from a binary file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">patients_problem</td><td>is vector of <a class="el" href="struct_patient_problem.html">PatientProblem</a> structure which temporary store info about problems</td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a53543b19bf5960ee1b6b174c55f96cdf" name="a53543b19bf5960ee1b6b174c55f96cdf"></a>
@@ -196,6 +227,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is for writing patient's problems out into a binary file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">patients_problem</td><td>is vector of <a class="el" href="struct_patient_problem.html">PatientProblem</a> structure which temporary store info about problems</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

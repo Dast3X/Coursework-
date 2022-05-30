@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['patientdata_0',['PatientData',['../_doctor_menu_8cpp.html#a249fed9351f2cba845598ee91c9eeab4',1,'PatientData(const vector&lt; PatientInfo &gt; &amp;patients_info, const vector&lt; PatientProblem &gt; &amp;patients_problem):&#160;DoctorMenu.cpp'],['../_doctor_menu_8h.html#abfe500014e0e628963c0da7b4c0af29a',1,'PatientData(const std::vector&lt; PatientInfo &gt; &amp;patients_info, const std::vector&lt; PatientProblem &gt; &amp;patients_problem):&#160;DoctorMenu.h']]],
-  ['printreviews_1',['PrintReviews',['../_treatment_process_8cpp.html#a0bbd6e946a6ac9a619f702e11a863514',1,'PrintReviews(const vector&lt; PatientInfo &gt; &amp;p_info, const vector&lt; PatientProblem &gt; &amp;p_problem, const vector&lt; TreatmentProcess &gt; &amp;p_review):&#160;TreatmentProcess.cpp'],['../_treatment_process_8h.html#af746fc1ee9ae0bea73fb91dc7d7bdd52',1,'PrintReviews(const std::vector&lt; PatientInfo &gt; &amp;p_info, const std::vector&lt; PatientProblem &gt; &amp;p_problem, const std::vector&lt; TreatmentProcess &gt; &amp;p_review):&#160;TreatmentProcess.h']]]
+  ['patientdata_0',['PatientData',['../_doctor_menu_8h.html#abfe500014e0e628963c0da7b4c0af29a',1,'DoctorMenu.h']]],
+  ['printreviews_1',['PrintReviews',['../_treatment_process_8h.html#af746fc1ee9ae0bea73fb91dc7d7bdd52',1,'TreatmentProcess.h']]]
 ];
