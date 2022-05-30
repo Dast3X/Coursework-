@@ -110,10 +110,8 @@ void Menu()
 			case '2':							 
 				system("cls");					
 				FindPatient(patients_info);										
-				cout << "\n\nAny input:";		
-				cin.ignore();					
-				BUFFERCLEAR						
-					system("cls");				
+				cout << "\n\nAny input:";							
+				system("cls");				
 				break;	
 			// Get info of all patients
 			case '3':
@@ -135,17 +133,15 @@ void Menu()
 				catch (const exception& e)										  
 				{																  
 					cerr << e.what();											  
-				}																  
-				break;    
+				}	
+				system("CLS");
+				break; 
 			// Find problem(s) by personal code
 			case '5':
 				system("cls");									  
 				cout << "Find problem(s) by personal code\n";	  
-				FindProblem(patients_problem);					  
-				cout << "\n\nAny input:";						  
-				cin.ignore();									  
-				BUFFERCLEAR										  
-					system("cls");								  
+				FindProblem(patients_problem);					  									  
+				system("cls");								  
 				break;
 			// Get review from patient
 			case '6':															  

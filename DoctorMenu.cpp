@@ -301,6 +301,7 @@ void Doctormenu(vector<PatientInfo>& p_info, vector<PatientProblem>& p_problem, 
 	char option = '0';
 	cout << "password: ";
 	cin >> password;
+	BUFFERCLEAR
 	system("cls");
 	if (password == "12345") {
 		while (option != '7')
@@ -333,10 +334,7 @@ void Doctormenu(vector<PatientInfo>& p_info, vector<PatientProblem>& p_problem, 
 		case '2':
 			system("cls");
 			FindProblem(p_problem);
-			cout << "\n\nAny input:";
-			cin.ignore();
-			BUFFERCLEAR
-				system("cls");
+			system("cls");
 			break;
 		case '3':
 			system("cls");

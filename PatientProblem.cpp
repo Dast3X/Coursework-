@@ -139,6 +139,9 @@ void FindProblem(vector<PatientProblem>& patients_problem)
 			continue;
 		}
 	}
+	cout << "\n\nAny input:";
+	cin.ignore();
+	BUFFERCLEAR
 	if (false)
 	{
 		cout << "Personal code was not found!";

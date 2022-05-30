@@ -140,7 +140,10 @@ void FindPatient(vector<PatientInfo>& patients_info)
 	{
 		cin >> code;
 		BUFFERCLEAR
-		if (code == "back") { break; }
+		if (code == "back") 
+		{ 
+			return; 
+		}
 		if (isvalid_data(code, R"re(\d{6}-\d{5})re"))
 		{
 			break;
@@ -167,6 +170,9 @@ void FindPatient(vector<PatientInfo>& patients_info)
 				<< "\nPersonal code: " << i.personal_code
 				<< "\nPhone number: " << i.phone_number
 				<< "\n\n";
+			cout << "\n\nAny input:";
+			cin.ignore();
+			BUFFERCLEAR
 			return;
 		}
 	}
