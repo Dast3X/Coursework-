@@ -56,6 +56,7 @@ std::ostream& operator<<(std::ostream& os, const std::vector<PatientInfo>& patie
 /// <returns>PatientInfo</returns>
 /// 
 PatientInfo GetInfo(const std::vector<PatientInfo>& patient_info);
+
 /// <summary>
 /// Function for finding patient info by personal code. You can write 'back' to return
 /// </summary>

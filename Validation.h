@@ -1,6 +1,7 @@
 #pragma once
 #include <regex>
 #include <string>
+
 /// <summary>
 /// Validation for user's inputs
 /// </summary>
