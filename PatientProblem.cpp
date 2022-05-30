@@ -2,7 +2,7 @@
 
 #define BUFFERCLEAR cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-using namespace std;
+using namespace std; 
 
 void WriteProblem(vector<PatientProblem>& patients_problem)
 {
