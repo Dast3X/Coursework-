@@ -100,7 +100,7 @@ PatientInfo GetInfo(const vector<PatientInfo>& patient_info)
 		BUFFERCLEAR
 		if (isvalid_data(tage, R"re(\d{1,2})re"))
 		{
-			patient.age = stoi(tage);
+			patient.age = (short)stoi(tage);
 			break;
 		}
 		else
