@@ -46,7 +46,7 @@ void PatientData(const std::vector<PatientInfo>& patients_info, const std::vecto
 
 ///\brief It is the function of doctor menu\n\n
 /// <b>Detailed desc.</b>
-/// 1) p_info p_problem p_review are passed in Doctormenu()
+/// 1) p_info p_problem p_review are passed in Doctormenu()\n
 /// 2) It outputs menu\n
 /// 3) Options of menu:
 ///   -  Get info of patients 
