@@ -1,5 +1,5 @@
 /*
-Coursework
+Coursework: Medical records
 
 Author         - Daniils Grammatikopulo 
 student code   - st79101
@@ -16,8 +16,6 @@ information, sort or filter or remove it or just outputting data.
    Begin of file "main.cpp"
  ********************************************************/
 
-
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -30,14 +28,14 @@ information, sort or filter or remove it or just outputting data.
 #include "TreatmentProcess.h"
 #include "DoctorMenu.h"
 
-///Brief desc.
+///\brief
 ///Macros to clear buffer, it's done for inputs
 #define BUFFERCLEAR	cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
 
 using namespace std;
 
-///Brief desc. It is the function of whole project, basically it just outputs menu\n
-///Detailed desc.\n
+///\brief It is the function of whole project, basically it just outputs menu\n\n
+/// <b>Detailed desc.</b>
 /// 1) It creates three vectors patients_info, patients_problem, patients_review to store infromation 
 /// while program is working\n
 /// 2) It Reads data in from a binary files\n
@@ -57,15 +55,16 @@ using namespace std;
 void Menu()
 {
 	
-	system("chcp 65001");						   // for library libfort
-	system("cls");								   // clear console 
-	vector<PatientInfo> patients_info; 			   //-|
-	vector<PatientProblem> patients_problem;	   // |-> vectors for database       
-	vector<TreatmentProcess> patients_review;	   //-|
+	system("chcp 65001");						   
+	system("cls");	
+	// temporary storage for information
+	vector<PatientInfo> patients_info; 			   
+	vector<PatientProblem> patients_problem;	         
+	vector<TreatmentProcess> patients_review;	   
 
-	ReadInfo(patients_info);					   //-|
-	ReadProblem(patients_problem);				   // |-> To get info from database
-	ReadReview(patients_review);				   //-|
+	ReadInfo(patients_info);					   
+	ReadProblem(patients_problem);				   
+	ReadReview(patients_review);				   
 	char option = '0';
 	while (option != 'q')
 	{
@@ -93,90 +92,98 @@ void Menu()
 		BUFFERCLEAR
 			switch (option)
 			{
+			// Enter detailed info on the patient
 			case '1':                                                     
-				system("CLS");											  //
-				cout << "Fill your info\n";								  // 1st option for patient
-				try														  // it will ask user for info
-				{														  // more detailed in files 
-					patients_info.push_back(GetInfo(patients_info)); 	  // "PatientInfo.cpp"
-				}														  //
-				catch (const exception& e)								  //
-				{														  //
-					cerr << e.what();									  //
-				}														  //
-				system("cls");											  //
-				break;													  //														 
+				system("CLS");											  
+				cout << "Fill your info\n";								  
+				try														  
+				{														  
+					patients_info.push_back(GetInfo(patients_info)); 	  
+				}														  
+				catch (const exception& e)								  
+				{														  
+					cerr << e.what();									  
+				}														  
+				system("cls");											  
+				break;		
+			// Find patient by personal code
 			case '2':							 
-				system("cls");					// 2nd option for patient
-				FindPatient(patients_info);		// it will find patient by personal code									
-				cout << "\n\nAny input:";		// by personal code more detailed in files 
-				cin.ignore();					// "PatientInfo.cpp"
-				BUFFERCLEAR						//
-					system("cls");				//
-				break;							//
+				system("cls");					
+				FindPatient(patients_info);										
+				cout << "\n\nAny input:";		
+				cin.ignore();					
+				BUFFERCLEAR						
+					system("cls");				
+				break;	
+			// Get info of all patients
 			case '3':
-				system("cls");				   //
-				cout << patients_info;		   // 3nd option for patient
-				cout << "\n\nAny input:";	   // it will print out all patient	
-				cin.ignore();				   // by personal code more detailed in files
-				BUFFERCLEAR					   // "PatientInfo.cpp"
-					system("cls");			   //
-				break;						   //
+				system("cls");				   
+				cout << patients_info;		   
+				cout << "\n\nAny input:";	   
+				cin.ignore();				   
+				BUFFERCLEAR					   
+					system("cls");			   
+				break;	
+		    // Fill patient(s) problem
 			case '4':															  
-				system("CLS");													  //
-				cout << "Fill patient problem \n";								  //  4th option for patient
-				try																  //  it will ask to fill problem	
-				{																  //  by personal code more detailed in files
-					patients_problem.push_back(GetProblem(patients_info));		  //  "PatientProblem.cpp"
-				}																  //
-				catch (const exception& e)										  //
-				{																  //
-					cerr << e.what();											  //
-				}																  //
-				break;                                                            //
+				system("CLS");													 
+				cout << "Fill patient problem \n";								  
+				try																  
+				{																  
+					patients_problem.push_back(GetProblem(patients_info));		  
+				}																  
+				catch (const exception& e)										  
+				{																  
+					cerr << e.what();											  
+				}																  
+				break;    
+			// Find problem(s) by personal code
 			case '5':
-				system("cls");
-				cout << "Find problem(s) by personal code\n";
-				FindProblem(patients_problem);
-				cout << "\n\nAny input:";
-				cin.ignore();
-				BUFFERCLEAR
-					system("cls");
+				system("cls");									  
+				cout << "Find problem(s) by personal code\n";	  
+				FindProblem(patients_problem);					  
+				cout << "\n\nAny input:";						  
+				cin.ignore();									  
+				BUFFERCLEAR										  
+					system("cls");								  
 				break;
-
-			case '6':
-				system("CLS");
-				cout << "Evaluate our company\n";
-				try
-				{
-					patients_review.push_back(GetReview(patients_problem));
-				}
-				catch (const exception& e)
-				{
-					cerr << e.what();
-				}
-				system("cls");
-				break;
-
+			// Get review from patient
+			case '6':															  
+				system("CLS");													  
+				cout << "Evaluate our company\n";								  
+				try																  
+				{																  
+					patients_review.push_back(GetReview(patients_problem));		  
+				}																  
+				catch (const exception& e)										  
+				{																  
+					cerr << e.what();											  
+				}																  
+				system("cls");													  
+				break;															  
+			// Print all reviews
 			case '7':
-				system("CLS");
-				PrintReviews(patients_info, patients_problem, patients_review);
-				cout << "\n\nAny input:";
-				cin.ignore();
+				system("CLS");													 
+				PrintReviews(patients_info, patients_problem, patients_review);	 	
+				cout << "\n\nAny input:";										 
+				cin.ignore();													 
 				BUFFERCLEAR
 					system("cls");
 				break;
+			// Go to Doctor Menu
 			case '8':
-				system("CLS");
-				Doctormenu(patients_info, patients_problem, patients_review);
-				break;
+				system("CLS");													
+				Doctormenu(patients_info, patients_problem, patients_review);	
+				break;															
+			// Quit the program																	
 			case 'q':
-				system("CLS");
-				cout << "You have quitted from the program!\n";
-				WriteProblem(patients_problem);
-				WriteInfo(patients_info);
-				WriteReview(patients_review);
+				system("CLS");												    
+				cout << "You have quitted from the program!\n";				   
+				WriteProblem(patients_problem);								   
+				WriteInfo(patients_info);									    
+				WriteReview(patients_review);								   
 				return;
+			// ERROR
 			default:
 				system("CLS");
 				cout << "ERROR" << endl;
@@ -188,12 +195,17 @@ void Menu()
 			}
 
 	}
-	WriteProblem(patients_problem);
-	WriteInfo(patients_info);
-	WriteReview(patients_review);
+	// Save info in binary files
+	WriteProblem(patients_problem);		 
+	WriteInfo(patients_info);			 
+	WriteReview(patients_review);		 
 }
 
+ 
+/// \brief 
+/// Calls function Menu() 
 int main()
 {
-	Menu();
+	// to call function Menu()
+	Menu();  
 }
