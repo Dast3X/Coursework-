@@ -1,0 +1,31 @@
+\hypertarget{_patient_info_8h_source}{}\doxysection{E\+:/\+VS/\+Projects/\+Coursework-\//\+Patient\+Info.h}
+\mbox{\hyperlink{_patient_info_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <regex>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_validation_8h}{Validation.h}}"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_patient_info}{PatientInfo}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_patient_info_a56c6dc1c19f75a24789cd5b0a3db290c}{name}}[16]\{\};}
+\DoxyCodeLine{12     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_patient_info_afd8cbb4ec961b876b54edf8789ad82b1}{surname}}[16]\{\};}
+\DoxyCodeLine{13     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{struct_patient_info_a76ae3cc665fa6c85dbe0146142c8f3af}{age}}\{\};}
+\DoxyCodeLine{14     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_patient_info_ab2a34a04cc8e2f29f1525a0fb4e06ccc}{personal\_code}}[16]\{\};}
+\DoxyCodeLine{15     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_patient_info_adb1a4f242d9ddcc623d28f7295d1e7bf}{phone\_number}}[16]\{\};}
+\DoxyCodeLine{16 \};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} \mbox{\hyperlink{_patient_info_8h_a8b6fd08b240a8658c954c5c8d4f62927}{WriteInfo}}(std::vector<PatientInfo>\& patients\_info);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} \mbox{\hyperlink{_patient_info_8h_a4a28b2023a86bd26932599a7ddaa0884}{ReadInfo}}(std::vector<PatientInfo>\& patients\_info);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 std::ostream\& \mbox{\hyperlink{_patient_info_8h_acb5cb18d664317857a7c387136c1f7f8}{operator<<}}(std::ostream\& os, \textcolor{keyword}{const} std::vector<PatientInfo>\& patients\_info);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \mbox{\hyperlink{struct_patient_info}{PatientInfo}} \mbox{\hyperlink{_patient_info_8h_a783b976d7a5f13a02d794f5857d4e697}{GetInfo}}(\textcolor{keyword}{const} std::vector<PatientInfo>\& patient\_info);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keywordtype}{void} \mbox{\hyperlink{_patient_info_8h_add160947019582234e93ec5b09e2e8af}{FindPatient}}(std::vector<PatientInfo>\& patients\_info);}
+
+\end{DoxyCode}

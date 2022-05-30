@@ -1,0 +1,59 @@
+\hypertarget{_patient_info_8h}{}\doxysection{E\+:/\+VS/\+Projects/\+Coursework-\//\+Patient\+Info.h File Reference}
+\label{_patient_info_8h}\index{E:/VS/Projects/Coursework-\//PatientInfo.h@{E:/VS/Projects/Coursework-\//PatientInfo.h}}
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$regex$>$}\newline
+{\ttfamily \#include \char`\"{}Validation.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_patient_info}{Patient\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_patient_info_8h_a8b6fd08b240a8658c954c5c8d4f62927}{Write\+Info}} (std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&patients\+\_\+info)
+\item 
+void \mbox{\hyperlink{_patient_info_8h_a4a28b2023a86bd26932599a7ddaa0884}{Read\+Info}} (std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&patients\+\_\+info)
+\item 
+std\+::ostream \& \mbox{\hyperlink{_patient_info_8h_acb5cb18d664317857a7c387136c1f7f8}{operator$<$$<$}} (std\+::ostream \&os, const std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&patients\+\_\+info)
+\item 
+\mbox{\hyperlink{struct_patient_info}{Patient\+Info}} \mbox{\hyperlink{_patient_info_8h_a783b976d7a5f13a02d794f5857d4e697}{Get\+Info}} (const std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&patient\+\_\+info)
+\item 
+void \mbox{\hyperlink{_patient_info_8h_add160947019582234e93ec5b09e2e8af}{Find\+Patient}} (std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&patients\+\_\+info)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_patient_info_8h_add160947019582234e93ec5b09e2e8af}\label{_patient_info_8h_add160947019582234e93ec5b09e2e8af}} 
+\index{PatientInfo.h@{PatientInfo.h}!FindPatient@{FindPatient}}
+\index{FindPatient@{FindPatient}!PatientInfo.h@{PatientInfo.h}}
+\doxysubsubsection{\texorpdfstring{FindPatient()}{FindPatient()}}
+{\footnotesize\ttfamily void Find\+Patient (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&}]{patients\+\_\+info }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_patient_info_8h_a783b976d7a5f13a02d794f5857d4e697}\label{_patient_info_8h_a783b976d7a5f13a02d794f5857d4e697}} 
+\index{PatientInfo.h@{PatientInfo.h}!GetInfo@{GetInfo}}
+\index{GetInfo@{GetInfo}!PatientInfo.h@{PatientInfo.h}}
+\doxysubsubsection{\texorpdfstring{GetInfo()}{GetInfo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} Get\+Info (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&}]{patient\+\_\+info }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_patient_info_8h_acb5cb18d664317857a7c387136c1f7f8}\label{_patient_info_8h_acb5cb18d664317857a7c387136c1f7f8}} 
+\index{PatientInfo.h@{PatientInfo.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!PatientInfo.h@{PatientInfo.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&}]{patients\+\_\+info }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_patient_info_8h_a4a28b2023a86bd26932599a7ddaa0884}\label{_patient_info_8h_a4a28b2023a86bd26932599a7ddaa0884}} 
+\index{PatientInfo.h@{PatientInfo.h}!ReadInfo@{ReadInfo}}
+\index{ReadInfo@{ReadInfo}!PatientInfo.h@{PatientInfo.h}}
+\doxysubsubsection{\texorpdfstring{ReadInfo()}{ReadInfo()}}
+{\footnotesize\ttfamily void Read\+Info (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&}]{patients\+\_\+info }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_patient_info_8h_a8b6fd08b240a8658c954c5c8d4f62927}\label{_patient_info_8h_a8b6fd08b240a8658c954c5c8d4f62927}} 
+\index{PatientInfo.h@{PatientInfo.h}!WriteInfo@{WriteInfo}}
+\index{WriteInfo@{WriteInfo}!PatientInfo.h@{PatientInfo.h}}
+\doxysubsubsection{\texorpdfstring{WriteInfo()}{WriteInfo()}}
+{\footnotesize\ttfamily void Write\+Info (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_patient_info}{Patient\+Info}} $>$ \&}]{patients\+\_\+info }\end{DoxyParamCaption})}
+

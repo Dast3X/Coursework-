@@ -1,0 +1,38 @@
+\hypertarget{_treatment_process_8h_source}{}\doxysection{E\+:/\+VS/\+Projects/\+Coursework-\//\+Treatment\+Process.h}
+\mbox{\hyperlink{_treatment_process_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <regex>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}fort.hpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_patient_problem_8h}{PatientProblem.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_patient_info_8h}{PatientInfo.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_treatment_process_8h}{TreatmentProcess.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_validation_8h}{Validation.h}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_treatment_process}{TreatmentProcess}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_treatment_process_af05c19e2ec274e5eff51b7380d3d96bc}{personal\_code}}[16]\{\};}
+\DoxyCodeLine{18     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_treatment_process_a1fc9cb0e95ccab025f880f27a846c0da}{discharge\_date}}[16]\{\};}
+\DoxyCodeLine{19     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_treatment_process_ac7bcb962cc0a9ed598495a24553928c3}{treatment}}[256]\{\};}
+\DoxyCodeLine{20     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_treatment_process_af619c12c44acc0d8ef648bd562eea437}{comment}}[1024]\{\};}
+\DoxyCodeLine{21     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_treatment_process_a9099fca21a9febf7be31789c92369109}{problem}}[24]\{\};}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} \mbox{\hyperlink{_treatment_process_8h_a2cf735d3957880c1640344d7b161fe93}{WriteReview}}(std::vector<TreatmentProcess>\& patients\_review);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} \mbox{\hyperlink{_treatment_process_8h_a18d3d00394cfa4ffc9d00942c445526c}{ReadReview}}(std::vector<TreatmentProcess>\& patients\_review);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \mbox{\hyperlink{struct_treatment_process}{TreatmentProcess}} \mbox{\hyperlink{_treatment_process_8h_a43777226632a7feff727a52c3b2466ef}{GetReview}}(std::vector<PatientProblem>\& patients\_problem);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keywordtype}{void} \mbox{\hyperlink{_treatment_process_8h_af746fc1ee9ae0bea73fb91dc7d7bdd52}{PrintReviews}}(\textcolor{keyword}{const} std::vector<PatientInfo>\& p\_info, \textcolor{keyword}{const} std::vector<PatientProblem>\& p\_problem, \textcolor{keyword}{const} std::vector<TreatmentProcess>\& p\_review);}
+
+\end{DoxyCode}
