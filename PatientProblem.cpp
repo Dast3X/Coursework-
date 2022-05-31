@@ -96,7 +96,7 @@ PatientProblem GetProblem(const vector<PatientInfo>& patients_info)
 			{
 
 				cout << "\nIncorrect input(s). Try again!\n";
-				cout << "Enter a starting date (dd/mm/yyyy): ";
+				cout << "Enter a starting date (dd.mm.yyyy): ";
 			}
 		}
 		return problem;

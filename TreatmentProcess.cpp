@@ -95,7 +95,7 @@ TreatmentProcess GetReview(vector<PatientProblem>& patients_problem)
 			{
 
 				cout << "\nIncorrect input(s). Try again!\n";
-				cout << "Enter a starting date (dd/mm/yyyy): ";
+				cout << "Enter a starting date (dd.mm.yyyy): ";
 			}
 		}
 		cout << "Describe the treatment process: ";
