@@ -6,75 +6,132 @@ using namespace std;
 void Filtering(const vector<PatientInfo>& p_info, const vector<PatientProblem>& p_problems)
 {
 	string temp;
-	while (true)
-	{
-		cout << "Choose:"
-			<< "\n1    - filter patients older than..."
-			<< "\n2    - filter problems by letter..."
-			<< "\n3    - filter patients by year..."
-			<< "\nback - return"
-			<< "\n\nInput: ";
-		cin >> temp;
-		BUFFERCLEAR
-			if (temp == "back")
-			{
-				return;
-			}
-		if (temp == "1")
+	fort::utf8_table table;
+	table.set_border_style(FT_NICE_STYLE);
+	table.column(0).set_cell_text_align(fort::text_align::center);
+	table.column(1).set_cell_text_align(fort::text_align::center);
+	table.column(2).set_cell_text_align(fort::text_align::center);
+	table.column(3).set_cell_text_align(fort::text_align::center);
+	table.column(4).set_cell_text_align(fort::text_align::center);
+	table.column(5).set_cell_text_align(fort::text_align::center);
+
+	cout << "Choose:"
+		<< "\n1    - filter patients older than..."
+		<< "\n2    - filter problems by letter..."
+		<< "\n3    - filter patients by year..."
+		<< "\nback - return"
+		<< "\n\nInput: ";
+	cin >> temp;
+	BUFFERCLEAR
+		if (temp == "back")
 		{
-			unsigned int tage;
-			system("cls");
-			while (true)
-			{
-				cout << "Patients over: ";
-				cin >> tage;
-				BUFFERCLEAR
-					if (isvalid_data(to_string(tage), R"re(^[1-9]?[0-9]{1}$|^100$)re"))
+			return;
+		}
+	if (temp == "1")
+	{
+		unsigned int tage;
+		system("cls");
+		while (true)
+		{
+			cout << "Patients over: ";
+			cin >> tage;
+			BUFFERCLEAR
+				if (isvalid_data(to_string(tage), R"re(^[1-9]?[0-9]{1}$|^100$)re"))
+				{
+					cout << '\n';
+					table << fort::header << "Age" << "Name" << "Surname" << fort::endr;
+					for (const auto& i : p_info)
 					{
-						cout << '\n';
-						for (const auto& i : p_info)
+						if (i.age > tage)
 						{
-							if (i.age > tage)
-							{
-								cout << i.age << " " << i.name << " " << i.surname << '\n';
-							}
+							table << i.age << i.name << i.surname << fort::endr;
 						}
-						cout << '\n';
-						break;
 					}
-					else
+					cout << table.to_string() << '\n';
+					cout << "\nAny input:";
+					cin.ignore();
+					BUFFERCLEAR
+					break;
+
+				}
+				else
+				{
+					system("cls");
+					cout << "Incorrect input(s). Try again!\n";
+				}
+		}
+	}
+	else if (temp == "2")
+	{
+		string tproblem;
+		system("cls");
+		while (true)
+		{
+			cout << "Problems starting from: ";
+			cin >> tproblem;
+			BUFFERCLEAR
+				if (tproblem == "back")
+				{
+					system("cls");
+					break;
+				}
+			if (isvalid_data(tproblem, R"re(\b[a-zA-Z])re"))
+			{
+			table << fort::header << "Starting date" << "Personal code" << "Problem" << fort::endr;
+				for (const auto& i : p_problems)
+				{
+					if (i.problem[0] == tproblem[0])
 					{
-						system("cls");
-						cout << "Incorrect input(s). Try again!\n";
+						table << i.starting_date << i.personal_code << i.problem << fort::endr;
 					}
+				}
+				cout << table.to_string() << '\n';
+				cout << "\nAny input:";
+				cin.ignore();
+				BUFFERCLEAR
+				break;
+			}
+			else
+			{
+				system("cls");
+				cout << "Incorrect input(s). Try again!\n";
 			}
 		}
-		else if (temp == "2")
+	}
+	else if (temp == "3")
+	{
+		char tyear[5], tdate[5]{};
+		system("cls");
+		while (true)
 		{
-			string tproblem;
+			cout << "Year: ";
+			cin >> tyear;
 			system("cls");
-			while (true)
+			if (string(tyear) == "back")
 			{
-				cout << "Problems starting from: ";
-				cin >> tproblem;
-				BUFFERCLEAR
-					if (tproblem == "back")
-					{
-						system("cls");
-						break;
-					}
-				if (isvalid_data(tproblem, R"re(\b[a-zA-Z])re"))
+				system("cls");
+				break;
+			}
+			BUFFERCLEAR
+				if (isvalid_data(string(tyear), R"re(^(((202)[0-2])|((2)(0)[0-1][0-9]))$)re"))
 				{
-					cout << "Format: \n   Date    |  Pers. code  | Problem \n";
-					cout << '\n';
+					table << fort::header << "Date" << "Personal code" << "Problem" << fort::endr;
 					for (const auto& i : p_problems)
 					{
-						if (i.problem[0] == tproblem[0])
+						for (unsigned int j = 0; j < 4; j++)
 						{
-							cout << i.starting_date << " | " << i.personal_code << " | " << i.problem << '\n';
+							tdate[j] = (i.starting_date[6 + j]);
+						}
+						tdate[4] = '\0';
+						if (string(tdate) == string(tyear))
+						{
+							table << i.starting_date << i.personal_code << i.problem << fort::endr;
 						}
 					}
-					cout << '\n';
+					cout << table.to_string() << '\n';
+					cout << "\nAny input:";
+					cin.ignore();
+					BUFFERCLEAR
 					break;
 				}
 				else
@@ -82,54 +139,14 @@ void Filtering(const vector<PatientInfo>& p_info, const vector<PatientProblem>& 
 					system("cls");
 					cout << "Incorrect input(s). Try again!\n";
 				}
-			}
-		}
-		else if (temp == "3")
-		{
-			char tyear[5], tdate[5]{};
-			system("cls");
-			while (true)
-			{
-				cout << "Year: ";
-				cin >> tyear;
-				system("cls");
-				if (string(tyear) == "back")
-				{
-					system("cls");
-					break;
-				}
-				BUFFERCLEAR
-					if (isvalid_data(string(tyear), R"re(^(((202)[0-2])|((2)(0)[0-1][0-9]))$)re"))
-					{
-						cout << "Format: \n   Date    |  Pers. code  | Problem \n";
-						for (const auto& i : p_problems)
-						{
-							for (unsigned int j = 0; j < 4; j++)
-							{
-								tdate[j] = (i.starting_date[6 + j]);
-							}
-							tdate[4] = '\0';
-							if (string(tdate) == string(tyear))
-							{
-								cout << i.starting_date << " | " << i.personal_code << " | " << i.problem << '\n';
-							}
-						}
-						cout << '\n';
-						break;
-					}
-					else
-					{
-						system("cls");
-						cout << "Incorrect input(s). Try again!\n";
-					}
-			}
-		}
-		else
-		{
-			system("cls");
-			cout << "No such option\n";
 		}
 	}
+	else
+	{
+		system("cls");
+		cout << "No such option\n";
+	}
+
 }
 void RemovePatient(vector<PatientInfo>& p_info, vector<PatientProblem>& p_problem, vector<TreatmentProcess>& p_review)
 {
