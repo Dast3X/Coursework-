@@ -177,4 +177,6 @@ void FindPatient(vector<PatientInfo>& patients_info)
 		}
 	}
 	cout << "Personal code was not found!";
+	cin.ignore();
+	BUFFERCLEAR
 }

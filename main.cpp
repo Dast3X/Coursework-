@@ -134,7 +134,7 @@ void Menu()
 				}																  
 				catch (const exception& e)										  
 				{																  
-					cerr << e.what();											  
+					cerr << e.what();
 				}	
 				system("CLS");
 				break; 
@@ -155,7 +155,11 @@ void Menu()
 				}																  
 				catch (const exception& e)										  
 				{																  
-					cerr << e.what();											  
+					cerr << e.what();	
+					cout << "\n\nAny input:";
+					cin.ignore();
+					BUFFERCLEAR
+					system("cls");
 				}																  
 				system("cls");													  
 				break;															  
@@ -166,7 +170,7 @@ void Menu()
 				cout << "\n\nAny input:";										 
 				cin.ignore();													 
 				BUFFERCLEAR
-					system("cls");
+				system("cls");
 				break;
 			// Go to Doctor Menu
 			case '8':

@@ -142,7 +142,7 @@ void FindProblem(vector<PatientProblem>& patients_problem)
 
 	if (temp == false)
 	{
-		cout << "Personal code was not found!";
+		cout << "Personal code was not found or patient didn't fill problem!";
 		cout << "\n\nAny input:";
 		cin.ignore();
 		BUFFERCLEAR
