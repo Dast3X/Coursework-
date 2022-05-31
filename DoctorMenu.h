@@ -7,6 +7,7 @@
 #include "PatientProblem.h"
 #include "TreatmentProcess.h"
 #include <algorithm>
+#include <limits>
 
 /// <summary>
 /// Function for filtering information by age(patients), by letter(problems), by year(patients).

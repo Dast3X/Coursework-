@@ -5,6 +5,7 @@
 #include <string>
 #include <regex>
 #include "Validation.h"
+#include <limits>
 /// <summary>
 ///\brief 
 /// It's a structure which stores info about 

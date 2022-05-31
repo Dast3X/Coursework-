@@ -6,6 +6,7 @@
 #include <fstream>
 #include <cstring>
 #include <exception>
+#include <limits>
 #include "fort.hpp"
 #include "PatientProblem.h"
 #include "PatientInfo.h"

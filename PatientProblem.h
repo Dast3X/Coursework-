@@ -6,8 +6,10 @@
 #include <iostream>
 #include <exception>
 #include <cstring>
+#include <limits>
 #include "PatientInfo.h"
 #include "Validation.h"
+
 
 /// <summary>
 /// \brief

@@ -22,11 +22,13 @@ information, sort or filter or remove it or just outputting data.
 #include <exception>
 #include <regex>
 #include <algorithm>
+#include <limits>
 #include "fort.hpp"
 #include "PatientInfo.h"
 #include "PatientProblem.h"
 #include "TreatmentProcess.h"
 #include "DoctorMenu.h"
+
 
 ///\brief
 ///Macros to clear buffer, it's done for inputs
