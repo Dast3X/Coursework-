@@ -158,7 +158,7 @@ void RemovePatient(vector<PatientInfo>& p_info, vector<PatientProblem>& p_proble
 	{
 		cout << i << ". " << p_info.at(i).personal_code << '\n';
 	}
-	cout << "\nInput: ";
+	cout << "\nInput (0-" << p_info.size()-1 << "):";
 	cin >> pos;
 	BUFFERCLEAR
 		if (pos > p_info.size() || pos < 0)
@@ -207,7 +207,7 @@ void Sorting(vector<PatientInfo>& p_info)
 	system("cls");
 	while (true)
 	{
-		cout << "1    - sort by age\n2    - sort by name\nback - return\n\nInput:";
+		cout << "1    - sort by age\n2    - sort by surname\nback - return\n\nInput:";
 		cin >> opt;
 		cout << '\n';
 		BUFFERCLEAR
@@ -218,15 +218,11 @@ void Sorting(vector<PatientInfo>& p_info)
 		if (opt == "1")
 		{
 			system("cls");
-			cout << "SORTING BY AGE\n\nbefore: \n\n";
-			for (const auto& i : p_info)
-				cout << "(" << i.age << " " << i.name << " " << i.surname << ")\n";
-			cout << '\n';
+			cout << "SORTING BY AGE\n\n";
 			sort(p_info.begin(), p_info.end(),
 				[](auto& p1, auto& p2) {
 					return p1.age > p2.age;
 				});
-			cout << "\nafter: \n\n";
 			for (const auto& i : p_info)
 				cout << "(" << i.age << " " << i.name << " " << i.surname << ")\n";
 			cout << '\n' << '\n';
@@ -234,15 +230,10 @@ void Sorting(vector<PatientInfo>& p_info)
 		else if (opt == "2")
 		{
 			system("cls");
-			cout << "SORTING BY NAME\n\nbefore: \n\n";
-
-			for (const auto& i : p_info)
-				cout << "(" << i.name << " " << i.surname << " " << i.age << ")\n";
-			cout << '\n';
-			sort(p_info.begin(), p_info.end(), [](auto& name1, auto& name2) {
-				return strcmp(name1.name, name2.name) < 0;
+			cout << "SORTING BY SURNAME\n\n";
+			sort(p_info.begin(), p_info.end(), [](auto& surname1, auto& surname2) {
+				return strcmp(surname1.surname, surname2.surname) < 0;
 				});
-			cout << "\nafter: \n\n";
 			for (const auto& i : p_info)
 				cout << "(" << i.name << " " << i.surname << " " << i.age << ")\n";
 			cout << '\n' << '\n';
